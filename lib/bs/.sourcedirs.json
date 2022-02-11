@@ -1,1 +1,1 @@
-{ "dirs" : [ "src" ] , "pkgs" : [ [ "@rescript/react" , "/home/davi/gits/retodos/node_modules/@rescript/react" ] ] , "generated" : [] }
+{ "dirs" : [ "src" ] , "pkgs" : [ [ "rescript-material-ui" , "/home/davi/gits/retodos/node_modules/rescript-material-ui" ] , [ "@rescript/react" , "/home/davi/gits/retodos/node_modules/@rescript/react" ] ] , "generated" : [] }

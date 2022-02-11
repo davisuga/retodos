@@ -1,4 +1,5 @@
 let str = React.string
+
 let useState = React.useState
 @react.component
 let make = () => {
@@ -6,7 +7,9 @@ let make = () => {
 
   let inc = _ => setCounter(_ => counter + 1)
   <div>
-    <h1> {str(`Counter: ${Belt.Int.toString(counter)}`)} </h1>
-    <button onClick={inc}> {str("Increment")} </button>
+    <Mui.Typography variant=#h4 gutterBottom=true>
+      {str(`Counter: ${Belt.Int.toString(counter)}`)}
+    </Mui.Typography>
+    <Mui.Button onClick={inc}> {str("Increment")} </Mui.Button>
   </div>
 }

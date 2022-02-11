@@ -2,6 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as Core from "@material-ui/core";
 
 function str(prim) {
   return prim;
@@ -24,9 +25,14 @@ function App(Props) {
                   return counter + 1 | 0;
                 }));
   };
-  return React.createElement("div", undefined, React.createElement("h1", undefined, "Counter: " + String(counter)), React.createElement("button", {
-                  onClick: inc
-                }, "Increment"));
+  return React.createElement("div", undefined, React.createElement(Core.Typography, {
+                  children: "Counter: " + String(counter),
+                  gutterBottom: true,
+                  variant: "h4"
+                }), React.createElement(Core.Button, {
+                  onClick: inc,
+                  children: "Increment"
+                }));
 }
 
 var make = App;
