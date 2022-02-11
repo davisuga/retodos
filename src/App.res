@@ -1,15 +1,91 @@
+open Mui
+open Mui.Box
+
 let str = React.string
+let int = React.int
+
+type todo = {
+  id: int,
+  text: string,
+  title: string,
+  completed: bool,
+}
 
 let useState = React.useState
 @react.component
 let make = () => {
-  let (counter, setCounter) = useState(_ => 0)
+  let (title, setTitle) = useState(_ => "")
+  let (todos, setTodos) = useState(_ => list{})
+  let (text, setText) = useState(_ => "")
+  let (error, setError) = useState(_ => "")
 
-  let inc = _ => setCounter(_ => counter + 1)
-  <div>
-    <Mui.Typography variant=#h4 gutterBottom=true>
-      {str(`Counter: ${Belt.Int.toString(counter)}`)}
-    </Mui.Typography>
-    <Mui.Button onClick={inc}> {str("Increment")} </Mui.Button>
-  </div>
+  let updateField = (fn, event) => {
+    let value = ReactEvent.Form.currentTarget(event)["value"]
+    fn(_ => value)
+  }
+
+  let addTodo = _ => {
+    if String.length(text) < 1 {
+      setError(_ => "Please enter a todo")
+    } else {
+      let todo = {
+        id: Belt.List.length(todos),
+        text: text,
+        title: title,
+        completed: false,
+      }
+      setTodos(_ => list{todo, ...todos})
+      setText(_ => "")
+      setTitle(_ => "")
+    }
+  }
+
+  let toggleTodo = targetTodo => {
+    let todos = Belt.List.map(todos, todo => {
+      if todo.id === targetTodo.id {
+        {
+          ...targetTodo,
+          completed: !targetTodo.completed,
+        }
+      } else {
+        todo
+      }
+    })
+    setTodos(_ => todos)
+  }
+
+  let items =
+    todos
+    ->Belt.List.toArray
+    ->Belt.Array.map(todo => {
+      <ListItem key={todo.id->Belt.Int.toString}>
+        <ListItemIcon>
+          <Checkbox
+            edge={Checkbox.Edge.start}
+            checked={todo.completed}
+            onClick={_ => toggleTodo(todo)}
+            tabIndex={-1->Checkbox.TabIndex.int}
+          />
+        </ListItemIcon>
+        <Box>
+          <Typography variant=#h4> {todo.title->str} </Typography>
+          <ListItemText> {todo.text->str} </ListItemText>
+        </Box>
+      </ListItem>
+    })
+    ->React.array
+
+  <Container>
+    <Box display={Value.string("flex")} flexDirection={Value.string("column")}>
+      <TextField
+        label={str("Title")} value={TextField.Value.string(title)} onChange={updateField(setTitle)}
+      />
+      <TextField
+        label={str("Text")} value={TextField.Value.string(text)} onChange={updateField(setText)}
+      />
+      <Button color=#primary onClick={addTodo} variant=#contained> {str("Add todo")} </Button>
+    </Box>
+    <Box display={Value.string("flex")} flexDirection={Value.string("column")}> {items} </Box>
+    <Snackbar message={str(error)} />
+  </Container>
 }
