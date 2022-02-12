@@ -115,14 +115,19 @@ function App(Props) {
                   children: null,
                   display: "flex",
                   flexDirection: "column"
-                }, React.createElement(Core.TextField, {
+                }, React.createElement(Core.Typography, {
+                      children: "Retodos",
+                      variant: "h1"
+                    }), React.createElement(Core.TextField, {
                       label: "Title",
+                      margin: "normal",
                       onChange: (function (param) {
                           return updateField(setTitle, param);
                         }),
                       value: title
                     }), React.createElement(Core.TextField, {
                       label: "Text",
+                      margin: "normal",
                       onChange: (function (param) {
                           return updateField(setText, param);
                         }),

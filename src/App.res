@@ -77,11 +77,18 @@ let make = () => {
 
   <Container>
     <Box display={Value.string("flex")} flexDirection={Value.string("column")}>
+      <Typography variant=#h1> {"Retodos"->str} </Typography>
       <TextField
-        label={str("Title")} value={TextField.Value.string(title)} onChange={updateField(setTitle)}
+        label={str("Title")}
+        value={TextField.Value.string(title)}
+        onChange={updateField(setTitle)}
+        margin=#normal
       />
       <TextField
-        label={str("Text")} value={TextField.Value.string(text)} onChange={updateField(setText)}
+        label={str("Text")}
+        value={TextField.Value.string(text)}
+        onChange={updateField(setText)}
+        margin=#normal
       />
       <Button color=#primary onClick={addTodo} variant=#contained> {str("Add todo")} </Button>
     </Box>
