@@ -11,4 +11,12 @@ o index.cmi : cp ../bs/src/index.cmi
 o index.cmj : cp ../bs/src/index.cmj
 o index.cmt : cp ../bs/src/index.cmt
 o index.res : cp ../../src/index.res
-build install.stamp : touch App.cmi App.cmj index.cmi index.cmj 
+o CustomTheme.cmi : cp ../bs/src/CustomTheme.cmi
+o CustomTheme.cmj : cp ../bs/src/CustomTheme.cmj
+o CustomTheme.cmt : cp ../bs/src/CustomTheme.cmt
+o CustomTheme.res : cp ../../src/CustomTheme.res
+o Home.cmi : cp ../bs/src/Pages/Home.cmi
+o Home.cmj : cp ../bs/src/Pages/Home.cmj
+o Home.cmt : cp ../bs/src/Pages/Home.cmt
+o Home.res : cp ../../src/Pages/Home.res
+build install.stamp : touch App.cmi App.cmj index.cmi index.cmj CustomTheme.cmi CustomTheme.cmj Home.cmi Home.cmj 

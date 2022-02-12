@@ -9,4 +9,6 @@ S /home/davi/gits/retodos/node_modules/rescript-material-ui/lib/ocaml
 B /home/davi/gits/retodos/node_modules/rescript-material-ui/lib/ocaml
 S src
 B lib/bs/src
+S src/Pages
+B lib/bs/src/Pages
 ####BSB GENERATED: NO EDIT}

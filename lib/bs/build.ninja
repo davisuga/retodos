@@ -5,14 +5,20 @@ rule astj
   command = /home/davi/gits/retodos/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/linux/bsc.exe  -bs-v 9.1.4 -bs-jsx 3  -absname -bs-ast -o $out $i
 o src/App.ast : astj ../../src/App.res
 rule deps
-  command = /home/davi/gits/retodos/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/linux/bsb_helper.exe -hash 6f75cb7e4dad48fa79dd6e0545bff799 $in
+  command = /home/davi/gits/retodos/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/linux/bsb_helper.exe -hash 53a27e9fd90e02a449ae330f2fde65fe $in
   restat = 1
 o src/App.d : deps src/App.ast
 rule mij
-  command = /home/davi/gits/retodos/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/linux/bsc.exe -I src -I /home/davi/gits/retodos/node_modules/@rescript/react/lib/ocaml -I /home/davi/gits/retodos/node_modules/rescript-material-ui/lib/ocaml   -bs-package-name retodos -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  command = /home/davi/gits/retodos/node_modules/.pnpm/rescript@9.1.4/node_modules/rescript/linux/bsc.exe -I src/Pages -I src -I /home/davi/gits/retodos/node_modules/@rescript/react/lib/ocaml -I /home/davi/gits/retodos/node_modules/rescript-material-ui/lib/ocaml   -bs-package-name retodos -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
   dyndep = 1
   restat = 1
 o src/App.cmj src/App.cmi ../../src/App.bs.js : mij src/App.ast
 o src/index.ast : astj ../../src/index.res
 o src/index.d : deps src/index.ast
 o src/index.cmj src/index.cmi ../../src/index.bs.js : mij src/index.ast
+o src/CustomTheme.ast : astj ../../src/CustomTheme.res
+o src/CustomTheme.d : deps src/CustomTheme.ast
+o src/CustomTheme.cmj src/CustomTheme.cmi ../../src/CustomTheme.bs.js : mij src/CustomTheme.ast
+o src/Pages/Home.ast : astj ../../src/Pages/Home.res
+o src/Pages/Home.d : deps src/Pages/Home.ast
+o src/Pages/Home.cmj src/Pages/Home.cmi ../../src/Pages/Home.bs.js : mij src/Pages/Home.ast
