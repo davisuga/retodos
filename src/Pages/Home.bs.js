@@ -146,10 +146,8 @@ function Home(Props) {
                       children: "Add todo",
                       color: "primary",
                       variant: "contained"
-                    })), React.createElement(Core.Box, {
-                  children: todos$1,
-                  display: "flex",
-                  flexDirection: "column"
+                    })), React.createElement(Core.List, {
+                  children: todos$1
                 }), React.createElement(Core.Snackbar, {
                   message: match$3[0]
                 }));

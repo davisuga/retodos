@@ -96,7 +96,7 @@ let make = () => {
       />
       <Button color=#primary onClick={addTodo} variant=#contained> {str("Add todo")} </Button>
     </Box>
-    <Box display={Value.string("flex")} flexDirection={Value.string("column")}> {todos} </Box>
+    <List> {todos} </List>
     <Snackbar message={str(error)} />
   </Container>
 }
