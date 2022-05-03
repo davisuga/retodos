@@ -119,7 +119,8 @@ function Home(Props) {
                 }, React.createElement(Core.Box, {
                       children: null,
                       display: "flex",
-                      flexDirection: "row"
+                      flexDirection: "row",
+                      fontWeight: "bold"
                     }, React.createElement(Core.Typography, {
                           children: "Re",
                           color: "primary",

@@ -78,7 +78,10 @@ let make = () => {
 
   <Container>
     <Box display={Value.string("flex")} flexDirection={Value.string("column")}>
-      <Box display={Value.string("flex")} flexDirection={Value.string("row")}>
+      <Box
+        fontWeight={Value.string("bold")}
+        display={Value.string("flex")}
+        flexDirection={Value.string("row")}>
         <Typography color=#primary variant=#h1> {"Re"->str} </Typography>
         <Typography variant=#h1> {"todos"->str} </Typography>
       </Box>
